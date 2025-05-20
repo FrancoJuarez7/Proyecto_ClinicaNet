@@ -6,27 +6,27 @@
 
 ## 📑 Índice
 
-1. [📝 Descripción del Proyecto](#descripción-del-proyecto)  
-2. [🧩 Modelo de Datos](#modelo-de-datos)  
-3. [👥 Gestión de Roles y Permisos](#gestión-de-roles-y-permisos)  
+1. [Descripción del Proyecto](#descripcion-del-proyecto)  
+2. [Modelo de Datos](#modelo-de-datos)  
+3. [Gestión de Roles y Permisos](#gestion-de-roles-y-permisos)  
    - [Asistente](#usuario-asistente)  
    - [Doctor](#usuario-doctor)  
-4. [⚙️ Funcionalidades Principales](#funcionalidades-principales)  
-5. [🔐 Seguridad y Autenticación](#seguridad-y-autenticación)  
-6. [🎨 Interfaz y Experiencia de Usuario](#interfaz-y-experiencia-de-usuario)  
-7. [📂 Importación de Datos](#importación-de-datos)  
-8. [🛠️ Tecnologías Utilizadas](#tecnologías-utilizadas)  
-9. [🤝 Contribuciones](#contribuciones)  
+4. [Funcionalidades Principales](#funcionalidades-principales)  
+5. [Seguridad y Autenticacion](#seguridad-y-autenticacion)  
+6. [Interfaz y Experiencia de Usuario](#interfaz-y-experiencia-de-usuario)  
+7. [Importacion de Datos](#importacion-de-datos)  
+8. [Tecnologias Utilizadas](#tecnologias-utilizadas)  
+9. [Contribuciones](#contribuciones)
 
 ---
 
-## 📝 Descripción del Proyecto
+## Descripcion del Proyecto
 
 ClinicaNet permite la gestión eficiente de afiliados, estados y tickets clínicos. Los asistentes pueden registrar y mantener los datos de los afiliados, mientras que los doctores se encargan de gestionar los tickets y sus detalles. La aplicación ofrece control de acceso, vistas personalizadas, filtros y búsqueda avanzada, e importación de datos desde archivos Excel.
 
 ---
 
-## 🧩 Modelo de Datos
+## Modelo de Datos
 
 - **Afiliado**
   - `Id`  
@@ -55,7 +55,7 @@ ClinicaNet permite la gestión eficiente de afiliados, estados y tickets clínic
 
 ---
 
-## 👥 Gestión de Roles y Permisos
+## Gestion de Roles y Permisos
 
 ### Usuario Asistente
 
@@ -72,7 +72,7 @@ ClinicaNet permite la gestión eficiente de afiliados, estados y tickets clínic
 
 ---
 
-## ⚙️ Funcionalidades Principales
+## Funcionalidades Principales
 
 - Sistema de autenticación y autorización por roles  
 - Vista principal personalizada para doctores con tickets pendientes de resolución  
@@ -83,7 +83,7 @@ ClinicaNet permite la gestión eficiente de afiliados, estados y tickets clínic
 
 ---
 
-## 🔐 Seguridad y Autenticación
+## Seguridad y Autenticacion
 
 - Implementación de ASP.NET Core Identity  
 - Control de acceso por roles  
@@ -92,7 +92,7 @@ ClinicaNet permite la gestión eficiente de afiliados, estados y tickets clínic
 
 ---
 
-## 🎨 Interfaz y Experiencia de Usuario
+## Interfaz y Experiencia de Usuario
 
 - Interfaz limpia y responsiva  
 - Vistas adaptadas según el tipo de usuario  
@@ -101,7 +101,7 @@ ClinicaNet permite la gestión eficiente de afiliados, estados y tickets clínic
 
 ---
 
-## 📂 Importación de Datos
+## Importacion de Datos
 
 La aplicación permite la carga masiva de afiliados mediante archivos Excel. Se utiliza una librería como **ClosedXML** o **EPPlus** para procesar los archivos `.xlsx`.
 
@@ -111,7 +111,7 @@ La aplicación permite la carga masiva de afiliados mediante archivos Excel. Se 
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
+## Tecnologias Utilizadas
 
 - **Lenguaje:** C#  
 - **Framework:** ASP.NET Core MVC (.NET 7 o superior)  
@@ -123,7 +123,14 @@ La aplicación permite la carga masiva de afiliados mediante archivos Excel. Se 
 
 ---
 
-## 🤝 Contribuciones
+## Contribuciones
+
+Si tenés ideas para mejorar ClinicaNet, encontraste un error o querés sumar funcionalidades, toda contribución es bienvenida.  
+No dudes en participar y ayudar a que este proyecto siga creciendo.
+
+---
+
+## Contribuciones
 
 Si tenés ideas para mejorar ClinicaNet, encontraste un error o querés sumar funcionalidades, toda contribución es bienvenida.  
 No dudes en participar y ayudar a que este proyecto siga creciendo.

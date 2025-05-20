@@ -1,0 +1,104 @@
+﻿@model ClinicaNet.Models.Afiliado
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="fondo-interior-app">
+
+    <h1 class="text-shadow">EDITAR AFILIADO</h1>
+
+    <hr />
+
+    <div class="row">
+
+        <div class="col-md-4 estilo-form-interior form-chico text-black fw-bold">
+
+            <form asp-action="Edit" enctype="multipart/form-data">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+
+                <div class="form-group">
+                    <label asp-for="Nombre" class="control-label"></label>
+                    <input asp-for="Nombre" class="form-control" />
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Apellido" class="control-label"></label>
+                    <input asp-for="Apellido" class="form-control" />
+                    <span asp-validation-for="Apellido" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DNI" class="control-label"></label>
+                    <input asp-for="DNI" class="form-control" />
+                    <span asp-validation-for="DNI" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FechaNacimiento" class="control-label"></label>
+                    <input asp-for="FechaNacimiento" class="form-control" />
+                    <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+                </div>
+
+                <!-- Es un campo oculto que almacena el nombre de la foto actual y lo envía al servidor cuando se envía el formulario al método de acción POST
+                    del Edit.
+
+                    Este valor almacenado en el campo "hidden" se obtiene cuando el usuario solicita la edición del Afiliado, ya que, al realizar el GET, el 
+                    controlador no solo muestrara el formulario para editar, sino que también completara los datos del formulario para editar. 
+                    Para lograr todo esto, el controlador que responde a la solicitud GET debe pasar a la vista el modelo (que incluye la propiedad NombreFoto
+                    con el valor de la foto actual) para completar el formulario de edición. 
+
+                    Así, al enviar a la vista el modelo para completar el formulario a editar, podemos capturar esa propiedad y utilizarla posteriormente para 
+                    realizar las operaciones necesarias, como actualizar o eliminar la foto. 
+                -->
+
+                <input type="hidden" asp-for="NombreFoto" />
+
+                <!-- PARA VER EN LA VISTA EDIT LA FOTO QUE FUE AGREGADA Y CARGADA A MI BASE DE DATOS, ES DECIR, TRAE Y MUESTRA LA FOTO.-->
+                <!-- El id="imagen" permite que la función readURL() del archivo cargarfoto.js actualice dinámicamente la imagen en la vista cuando se 
+                    seleccione un nuevo archivo en el input. -->
+
+                <div class="form-group mt-2 mb-2">
+
+                    @if (!string.IsNullOrEmpty(Model.NombreFoto))
+                    {
+                        <img src="~/images/fotos/@Model.NombreFoto" width="60" id="imagen" asp-append-version="true" />
+                    }
+                </div>
+
+                <!-- INPUT PARA CARGAR UNA FOTO, EN ESTE CASO, PARA EDITARLA -->
+                <!-- El id="seleccionImg" se utiliza para identificar el elemento `input` para que, al seleccionar una nueva imagen, se active el evento 
+                    change, manejado en cargarfoto.js. Este evento se dispara cuando detecta un cambio en el valor, es decir, cuando se selecciona una nueva 
+                    foto. Al activarse, se ejecuta la función readURL(), que actualiza dinámicamente la previsualización de la imagen seleccionada, 
+                    permitiendo verla antes de enviarla al servidor para su almacenamiento. -->
+
+                <div class="form-group">
+                    <label asp-for="NombreFoto" class="control-label"></label>
+                    <input asp-for="NombreFoto" type="file" id="seleccionImg" class="form-control" />
+                </div>
+
+                <div class="form-group mt-3 d-flex gap-2">
+                    <input type="submit" value="Guardar" class="btn btn-primary mt-2" />
+                    <a asp-action="Index" class="btn btn-info mt-2">Volver al registro</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<!--Se cargan solo para esta vista.De esta forma, esos scripts solo se cargarán en esa vista y no afectarán a otras vistas.-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> <!--Libreria de jQuery para poder utilizarla en el archivo de abajo-->
+<script src="~/js/cargarfoto.js"></script> <!--Archivo personalziada de Js, no una libreria-->
+
+<!-- El funcionamiento de la previsualización de imágenes sigue estos pasos: al seleccionar un archivo en el input (identificado con id="seleccionImg"),
+    el archivo JavaScript personalizado, que utiliza jQuery, detecta el cambio y ejecuta el código correspondiente. Específicamente, se activa el
+    evento change asociado al input, lo que dispara la función readURL(). 
+    
+    Esta función, a su vez, actualiza dinámicamente el atributo `src` de la imagen (con id="imagen") para mostrar una previsualización de la imagen
+    seleccionada antes de enviarla al servidor para su almacenamiento. La función `readURL()` utiliza el objeto `FileReader` para leer el archivo
+    seleccionado y generar una URL en base64 que se asigna a la imagen, permitiendo su visualización en el cliente.
+-->

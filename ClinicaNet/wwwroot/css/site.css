@@ -1,0 +1,141 @@
+/* Asegura que los botones, formularios y entradas tengan el estilo adecuado */
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    font-size: 14px; /* Tamaño base para la fuente */
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+}
+
+
+/* Aumenta el tamaño de la fuente en pantallas más grandes */
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+   /* - - - - - FONDOS - - - - - */
+
+/* Fondo principal Registro y Login */
+
+.fondo-acceso-denegado,
+.fondo-interior-app,
+.fondo-recuperar-contrasenia,
+.fondo-register-login {
+    width: 100%;
+    height: 100%;
+}
+
+[class^="fondo-"]::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+    z-index: -1;
+}
+
+.fondo-register-login::before {
+    background-image: url('/images/Fondos/ClinicaNet.png');
+    background-size: 1550px 800px;
+    top: 50px
+}
+
+.fondo-recuperar-contrasenia::before {
+    background-image: url('/images/Fondos/Recupero_contrasenia.jpeg');
+}
+
+.fondo-interior-app::before {
+    background-image: url('/images/Fondos/Sala_espera.png');
+}
+
+.fondo-acceso-denegado::before {
+    background-image: url('/images/Fondos/Acceso_denegado.png');
+    height: 800px;
+    background-size: 600px 600px;
+}
+
+  /* - - - - - FORMULARIOS - - - - - */
+
+
+.estilo-form-recupero-contrasenia {
+    width: 100%;
+    max-width: 400px;
+}
+
+.estilo-form-register-login {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    background: rgba(250, 250, 250, 0.95);
+    padding: 12px;
+    border-radius: 12px;
+    margin-top: 15px;
+    margin-bottom: 115px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/*Formularios interior app (una vez ingresado)*/
+.estilo-form-interior {
+    position: relative;
+    width: 100%;
+    background: rgba(250, 250, 250, 0.95);
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left:10px;
+}
+
+.estilo-form-interior.form-chico { /*VER QUE USE EL DE .estilo-form-interior  REVISAR TODAS LAS VISTAS Y CORREGIR */
+        max-width: 461px;
+}
+
+.estilo-form-interior.form-grande {
+   max-width: 760px;
+}
+
+
+  /* - - - - -TABLAS - - - - -*/
+
+.estilo-tablas {
+    background: rgba(250, 251, 252, 0.9);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+
+  /* - - - - - OTROS - - - - - */
+.text-shadow {
+    text-shadow: 5px 4px 4px rgba(255, 255, 255, 0.8);
+}
+
+.nav-link {
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: darkturquoise;
+    border-radius: 50px;
+}
+
+.go-home.active,
+.go-home:hover {
+    text-decoration: underline;
+    transition: text-decoration 0.2s ease, font-weight 0.2s ease;
+}

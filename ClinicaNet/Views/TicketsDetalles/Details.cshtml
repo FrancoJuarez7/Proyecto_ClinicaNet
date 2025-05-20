@@ -1,0 +1,47 @@
+﻿@model ClinicaNet.Models.TicketDetalle
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="fondo-interior-app">
+
+    <h1 class="text-shadow">DETALLES DEL TICKET</h1>
+    <hr />
+
+    <div class="estilo-form-interior form-chico">
+        
+        <dl class="row">
+            <dt class = "col-sm-6">
+                @Html.DisplayNameFor(model => model.Ticket):
+            </dt>
+            <dd class = "col-sm-6">
+                @Html.DisplayFor(model => model.Ticket.Id)
+            </dd>
+            <dt class = "col-sm-6">
+                @Html.DisplayNameFor(model => model.DescripcionPedido):
+            </dt>
+            <dd class = "col-sm-6">
+                @Html.DisplayFor(model => model.DescripcionPedido)
+            </dd>
+            <dt class = "col-sm-6">
+                @Html.DisplayNameFor(model => model.Estado):
+            </dt>
+            <dd class = "col-sm-6">
+                @Html.DisplayFor(model => model.Estado.Descripcion)
+            </dd>
+            <dt class = "col-sm-6">
+                @Html.DisplayNameFor(model => model.FechaEstado):
+            </dt>
+            <dd class = "col-sm-6">
+                @Html.DisplayFor(model => model.FechaEstado)
+            </dd>
+        </dl>
+
+        <div class="mt-3 d-flex gap-2">
+            <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Editar</a>
+            <a asp-action="Index" class="btn btn-info">Volver al listado</a>
+        </div>
+
+    </div>
+</div>

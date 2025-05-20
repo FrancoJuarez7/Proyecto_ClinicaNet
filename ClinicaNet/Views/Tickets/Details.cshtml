@@ -1,0 +1,40 @@
+﻿@model ClinicaNet.Models.Ticket
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="fondo-interior-app">
+
+    <h1 class="text-shadow">DETALLE TICKET</h1>
+    <hr/>
+
+    <div class="estilo-form-interior form-chico">
+        <dl class="row">
+            <dt class = "col-sm-6">
+                @Html.DisplayNameFor(model => model.Afiliado):
+            </dt>
+            <dd class = "col-sm-6">
+                @Html.DisplayFor(model => model.Afiliado.NombreCompleto)
+            </dd>
+            <dt class = "col-sm-6">
+                @Html.DisplayNameFor(model => model.FechaSolicitud):
+            </dt>
+            <dd class = "col-sm-6">
+                @Html.DisplayFor(model => model.FechaSolicitud)
+            </dd>
+            <dt class = "col-sm-6">
+                @Html.DisplayNameFor(model => model.Observacion):
+            </dt>
+            <dd class = "col-sm-6">
+                @Html.DisplayFor(model => model.Observacion)
+            </dd>
+        </dl>
+
+        <div class="mt-3 d-flex gap-2">
+            <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Editar</a> 
+            <a asp-action="Index" class="btn btn-info">Volver al panel</a>
+        </div>
+    </div>
+
+</div>

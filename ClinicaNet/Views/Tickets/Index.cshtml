@@ -1,0 +1,61 @@
+﻿@model ClinicaNet.ViewModel.TicketsViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="fondo-interior-app">
+    <h1 class="text-shadow">PANEL DE TICKETS</h1>
+
+    <p>
+        <a asp-action="Create" class="btn btn-success">Crear nuevo</a>
+    </p>
+
+    <div class="estilo-tablas text-start">
+        <form asp-action="Index" method="get" class="text-black fw-bold">
+            <p>
+                Afiliado <input type="text" asp-for="buscarAfiliado" />
+                <input type="submit" value="Filtrar" />
+            </p>
+        </form>
+
+        <table class="table text-center">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tickets![0].Afiliado)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tickets![0].FechaSolicitud)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tickets![0].Observacion)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+        @foreach (var item in Model.Tickets!) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Afiliado.NombreCompleto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaSolicitud)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Observacion)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Editar</a> 
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Detalles</a> 
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+        }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<partial name="_Paginador" for="@Model.Paginador"></partial>

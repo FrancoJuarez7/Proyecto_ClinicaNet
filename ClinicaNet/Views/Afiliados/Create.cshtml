@@ -1,0 +1,107 @@
+﻿@model ClinicaNet.Models.Afiliado
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="fondo-interior-app">
+
+    <h1 class="text-shadow">CREAR AFILIADO</h1>
+
+    <hr />
+
+    <div class="row">
+
+        <div class="col-md-4 estilo-form-interior form-chico text-black fw-bold">
+
+            <form asp-action="Create" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="Nombre" class="control-label"></label>
+                    <input asp-for="Nombre" class="form-control" />
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Apellido" class="control-label"></label>
+                    <input asp-for="Apellido" class="form-control" />
+                    <span asp-validation-for="Apellido" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="DNI" class="control-label"></label>
+                    <input asp-for="DNI" class="form-control" />
+                    <span asp-validation-for="DNI" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="FechaNacimiento" class="control-label"></label>
+                    <input asp-for="FechaNacimiento" class="form-control" />
+                    <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+                </div>
+
+                <!-- PARA VER EN LA VISTA EDIT LA FOTO QUE FUE AGREGADA Y CARGADA A MI BASE DE DATOS, ES DECIR, TRAE Y MUESTRA LA FOTO.-->
+                <div>
+                    <img src="" width="60" id="imagen" asp-append-version="true" />
+                </div>
+
+
+                <!-- INPUT PARA AGREGAR UN ARCHIVO, ACA UNA FOTO -->
+
+                <div class="form-group mb-2">
+                    <label asp-for="NombreFoto" class="control-label">Seleccione foto del afiliado</label>
+                    <input asp-for="NombreFoto" type="file" id="seleccionImg"  accept="image/jpeg" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Crear" id="seleccionImg" class="btn btn-primary" />
+                </div>
+            </form>
+
+            <!-- PARA IMPORTAR UN ARCHIVO, HAGO UN FORMULARIO APARTE PORQUE ESTE VA A LA ACCION IMPORTAR EL OTRO VA A CREATE -->
+            <form asp-action="ImportarExcel" enctype="multipart/form-data">
+
+                <div class="form-group mb-2">
+                    <label class="control-label">Seleccione archivo a importar</label>
+                    <input type="file" name="archivoSeleccionado" class="form-control" />
+                </div>
+
+                <div class="form-group mb-2">
+                    <input type="submit" value="Importar" class="btn btn-primary" />
+                </div>
+
+            </form>
+
+            <div>
+                <a asp-action="Index" class="btn btn-info">Volver al registro</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<!--Se cargan solo para esta vista.De esta forma, esos scripts solo se cargarán en esa vista y no afectarán a otras vistas.-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> <!--Libreria de jQuery para poder utilizarla en el archivo de abajo-->
+
+<script src="~/js/cargarfoto.js"></script> <!--Archivo personalziada de Js, no una libreria-->
+
+<!-- El funcionamiento de la previsualización de imágenes sigue estos pasos: al seleccionar un archivo en el input (identificado con id="seleccionImg"),
+el archivo JavaScript personalizado, que utiliza jQuery, detecta el cambio y ejecuta el código correspondiente. Específicamente, se activa el
+evento change asociado al input, lo que dispara la función readURL().
+
+Esta función, a su vez, actualiza dinámicamente el atributo `src` de la imagen (con id="imagen") para mostrar una previsualización de la imagen
+seleccionada antes de enviarla al servidor para su almacenamiento. La función `readURL()` utiliza el objeto `FileReader` para leer el archivo
+seleccionado y generar una URL en base64 que se asigna a la imagen, permitiendo su visualización en el cliente.
+-->
+
+
+<span class="text-danger">
+    @Html.ValidationMessageFor(model => model.Nombre)
+</span>

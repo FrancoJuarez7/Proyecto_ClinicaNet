@@ -1,0 +1,30 @@
+﻿@model ClinicaNet.Models.Estado
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="fondo-interior-app">
+
+    <h1 class="text-shadow">ELIMINAR UN ESTADO</h1>
+
+    <div class="estilo-form-interior form-grande">
+        <h3>¿Estás seguro de que quieres eliminar un estado?</h3>
+        <hr />
+        <dl class="row">
+            <dt class = "col-sm-4">
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </dt>
+            <dd class = "col-sm-4">
+                @Html.DisplayFor(model => model.Descripcion)
+            </dd>
+        </dl>
+    
+        <form asp-action="Delete" class="mt-3 d-flex gap-2">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+            <a asp-action="Index" class="btn btn-info">Volver al listado</a>
+        </form>
+
+    </div>
+</div>

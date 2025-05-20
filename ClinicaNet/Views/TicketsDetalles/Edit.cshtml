@@ -1,0 +1,57 @@
+﻿@model ClinicaNet.Models.TicketDetalle
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="fondo-interior-app">
+
+    <h1 class="text-shadow">EDITAR DETALLE DEL TICKET</h1>
+
+    <hr />
+
+    <div class="row fondo-interior-app">
+
+        <div class="col-md-4 estilo-form-interior form-chico text-black fw-bold">
+
+            <form asp-action="Edit">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+
+                <div class="form-group">
+                    <label asp-for="TicketId" class="control-label"></label>
+                    <select asp-for="TicketId" class="form-control" asp-items="ViewBag.TicketId"></select>
+                    <span asp-validation-for="TicketId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="DescripcionPedido" class="control-label"></label>
+                    <input asp-for="DescripcionPedido" class="form-control" />
+                    <span asp-validation-for="DescripcionPedido" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="EstadoId" class="control-label"></label>
+                    <select asp-for="EstadoId" class="form-control" asp-items="ViewBag.EstadoId"></select>
+                    <span asp-validation-for="EstadoId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="FechaEstado" class="control-label"></label>
+                    <input asp-for="FechaEstado" class="form-control" />
+                    <span asp-validation-for="FechaEstado" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mt-3 d-flex gap-2">
+                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-info">Volver al listado</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

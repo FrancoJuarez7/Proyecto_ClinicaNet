@@ -1,0 +1,49 @@
+﻿@model ClinicaNet.Models.Ticket
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="fondo-interior-app">
+
+    <h1 class="text-shadow">EDITAR TICKET</h1>
+
+    <hr />
+    <div class="row fondo-interior-app">
+
+        <div class="col-md-4 estilo-form-interior form-chico text-black fw-bold">
+
+            <form asp-action="Edit">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+
+                <div class="form-group">
+                    <label asp-for="AfiliadoId" class="control-label"></label>
+                    <select asp-for="AfiliadoId" class="form-control" asp-items="ViewBag.AfiliadoId"></select>
+                    <span asp-validation-for="AfiliadoId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FechaSolicitud" class="control-label"></label>
+                    <input asp-for="FechaSolicitud" class="form-control" />
+                    <span asp-validation-for="FechaSolicitud" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Observacion" class="control-label"></label>
+                    <input asp-for="Observacion" class="form-control" />
+                    <span asp-validation-for="Observacion" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mt-3 d-flex gap-2">
+                    <input type="submit" value="Guardar" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-info">Volver al panel</a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,87 @@
+﻿@model ClinicaNet.ViewModel.TicketsDetailsListViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="fondo-interior-app">
+
+    @if (!User.IsInRole("Asistente") && Model.TicketsDetalles.Count != 0)
+    {
+        <div class="container mt-5">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <h1 class="display-4">CLINICA NET</h1>
+                    <p class="text-black">Hola Doctor! Usted tiene los siguientes tickets pendientes</p>
+                 </div>
+            </div>
+
+            <table class="table text-center  estilo-tablas mt-2">
+                 <thead>
+                      <tr>
+                          <th>
+                              @Html.DisplayNameFor(model => model.TicketsDetalles[0].Ticket.Id)
+                          </th>
+                          <th>
+                              @Html.DisplayNameFor(model => model.TicketsDetalles[0].Ticket.FechaSolicitud)
+                          </th>
+                          <th>
+                              @Html.DisplayNameFor(model => model.TicketsDetalles[0].Ticket.Afiliado.Apellido)
+                          </th>
+                          <th></th>
+                      </tr>
+                 </thead>
+                 <tbody>
+                    @foreach (var ticketDetalle in Model.TicketsDetalles)
+                    {
+                       <tr>
+                           <td>
+                               @Html.DisplayFor(modelItem => ticketDetalle.Ticket.Id)
+                           </td>
+                           <td>
+                               @Html.DisplayFor(modelItem => ticketDetalle.Ticket.FechaSolicitud)
+                           </td>
+                           <td>
+                               @Html.DisplayFor(modelItem => ticketDetalle.Ticket.Afiliado.Apellido)
+                           </td>
+                           <td>
+                               <a asp-action="TicketsDetails" asp-route-id="@ticketDetalle.Ticket.Id" class="btn btn-success">Ver mas detalle</a>
+                               </td>
+                            </tr>
+                    }
+                    </tbody>
+                </table>
+        </div>
+
+       <partial name="_Paginador" for="@Model.Paginador"></partial>
+    }
+    else if (User.IsInRole("Asistente"))
+    {
+        <div class="container mt-5">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+
+                    <h1 class="display-5 mb-3">¡Bienvenido a CLÍNICA NET!</h1>
+                    <p class="mt-3 text-black">
+                        Como asistente médico, tendrás acceso a la gestión y seguimiento de los tickets generados por los especialistas. Podrás consultar la lista de afiliados 
+                        vinculados, colaborar con los doctores proporcionando la información necesaria y asegurarte de que cada caso se gestione de manera adecuada y eficiente.
+                    </p>
+
+                    <a href="/Afiliados" class="btn btn-primary mt-3">Ver Afiliados</a>
+
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="container mt-5">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <h1 class="display-4">CLINICA NET</h1>
+                    <p class="text-black">Hola Doctor! Usted no cuenta con tickets pendientes.</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,50 @@
+﻿@model ClinicaNet.Models.TicketDetalle
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="fondo-interior-app">
+
+    <h1 class="text-shadow">ELIMINAR DETALLE DEL TICKET</h1>
+
+    <div class="estilo-form-interior form-grande">
+
+        <h3>¿Estás seguro de que quieres eliminar el detalle del ticket?</h3>
+        <hr />
+
+        <dl class="row">
+            <dt class = "col-sm-4">
+                @Html.DisplayNameFor(model => model.Ticket):
+            </dt>
+            <dd class = "col-sm-7">
+                @Html.DisplayFor(model => model.Ticket.Id)
+            </dd>
+            <dt class = "col-sm-4">
+                @Html.DisplayNameFor(model => model.DescripcionPedido):
+            </dt>
+            <dd class = "col-sm-7">
+                @Html.DisplayFor(model => model.DescripcionPedido)
+            </dd>
+            <dt class = "col-sm-4">
+                @Html.DisplayNameFor(model => model.Estado):
+            </dt>
+            <dd class = "col-sm-7">
+                @Html.DisplayFor(model => model.Estado.Descripcion)
+            </dd>
+            <dt class = "col-sm-4">
+                @Html.DisplayNameFor(model => model.FechaEstado):
+            </dt>
+            <dd class = "col-sm-7">
+                @Html.DisplayFor(model => model.FechaEstado)
+            </dd>
+        </dl>
+    
+        <form asp-action="Delete" class="mt-3 d-flex gap-2">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+            <a asp-action="Index" class="btn btn-info">Volver al listado</a>
+        </form>
+
+    </div>
+</div>

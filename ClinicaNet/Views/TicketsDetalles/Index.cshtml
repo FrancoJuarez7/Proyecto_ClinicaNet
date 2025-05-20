@@ -1,0 +1,59 @@
+﻿@model ClinicaNet.ViewModel.TicketsDetailsListViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="fondo-interior-app">
+
+    <h1 class="text-shadow">DETALLES POR TICKETS</h1>
+
+    <p>
+        <a asp-action="Create" class="btn btn-success">Crear nuevo</a>
+    </p>
+
+    <table class="table estilo-tablas text-center">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TicketsDetalles![0].Ticket)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TicketsDetalles![0].DescripcionPedido)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TicketsDetalles![0].Estado)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TicketsDetalles![0].FechaEstado)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model.TicketsDetalles!) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ticket!.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DescripcionPedido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado!.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaEstado)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Editar</a> 
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Detalles</a> 
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+</div>
+
+<partial name="_Paginador" for="@Model.Paginador"></partial>

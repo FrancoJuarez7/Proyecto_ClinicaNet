@@ -1,0 +1,74 @@
+﻿@model ClinicaNet.ViewModel.PaginadorViewModel
+
+<nav aria-label="...">
+    <ul class="pagination justify-content-center">
+
+        <!-- asp-all-route-data: mantiene los filtros aplicados (inputs de búsqueda) al navegar entre páginas -->
+        <!-- asp-route-pagina: define el número de página al que se quiere ir al hacer clic en un enlace -->
+
+        <!-- Debo tener en cuenta que los botones "Anterior" y "Siguiente" se renderizan siempre, independientemente de la página actual. Luego, según las 
+            condiciones definidas en los if, se va construyendo dinámicamente el resto de la estructura de paginación, agregando los elementos <li> y sus 
+            respectivos <a> quedándonos por ejemplo:
+
+                                [Anterior] + [1] [PáginaAnterior] [Actual] [PáginaSiguiente] [Última] + [Siguiente]
+                                                     Anterior  1  3  [4]  5  6  Siguiente
+        -->
+
+                                    <!-- - - - - - - - - - - - - - - -  ANTERIOR + - - - - - - - - - - - - - - - -->
+        <!-- Si estoy en la página 1, la opción queda deshabilitada. asp-route-pagina="@(Model.PaginaActual - 1)" calcula a qué página ir.
+             Ej: si estoy en la 1, 1 - 1 = 0, y el controlador interpretará que debe quedarse en la primera. -->
+
+        <li class="page-item @(Model.PaginaActual == 1 ? "disabled" : "")">
+            <a class="page-link" asp-all-route-data="@Model.ValoresQueryString" asp-route-pagina="@(Model.PaginaActual - 1)" tabindex="-1"> Anterior </a>
+        </li>
+
+                                    <!-- - - - - - - - - - - - - - - -  + ESTRUCTURA INTERNA + - - - - - - - - - - - - - - - -->
+
+        <!-- Si estoy en la página 3 o más, muestro un enlace directo a la página 1 -->
+        @if (Model.PaginaActual > 2)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-all-route-data="@Model.ValoresQueryString" asp-route-pagina="1">1</a>
+            </li>
+        }
+
+        <!-- Muestro el número de página anterior si no estoy en la primera -->
+        @if (Model.PaginaActual > 1)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-all-route-data="@Model.ValoresQueryString" asp-route-pagina="@(Model.PaginaActual - 1)"> @(Model.PaginaActual - 1)</a>
+            </li>
+        }
+
+        <!-- Página actual (activa, sin link) -->
+        <li class="page-item active">
+            <a class="page-link" asp-route-pagina="@Model.PaginaActual">@Model.PaginaActual<span class="sr-only"></span></a>
+        </li>
+
+        <!-- Muestro el número de página siguiente si no estoy en la última -->
+        @if (Model.PaginaActual < Model.TotalPagina)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-all-route-data="@Model.ValoresQueryString" asp-route-pagina="@(Model.PaginaActual + 1)"> @(Model.PaginaActual + 1)</a>
+            </li>
+        }
+
+        <!-- Muestro un enlace directo a la última página si estoy a dos o más páginas de ella -->
+        @if (Model.PaginaActual < (Model.TotalPagina - 1))
+        {
+            <li class="page-item">
+                <a class="page-link" asp-all-route-data="@Model.ValoresQueryString" asp-route-pagina="@(Model.TotalPagina)"> @(Model.TotalPagina)</a>
+            </li>
+        }
+
+                                    <!-- - - - - - - - - - - - - - - - + SIGUIENTE - - - - - - - - - - - - - - - -->
+        <!-- Si estoy en la última página, desactivo el botón -->
+
+        <li class="page-item @(Model.PaginaActual == Model.TotalPagina ? "disabled" : "")">
+            <a class="page-link" asp-all-route-data="@Model.ValoresQueryString" asp-route-pagina="@(Model.PaginaActual + 1)"> Siguiente </a>
+        </li>
+
+    </ul>
+</nav>
+
+

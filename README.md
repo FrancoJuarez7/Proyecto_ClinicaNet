@@ -114,11 +114,11 @@ La aplicación permite la carga masiva de afiliados mediante archivos Excel. Se 
 ## Tecnologias Utilizadas
 
 - **Lenguaje:** C#  
-- **Framework:** ASP.NET Core MVC (.NET 7 o superior)  
+- **Framework:** ASP.NET Core MVC  
 - **Base de Datos:** SQL Server  
 - **ORM:** Entity Framework Core  
 - **Autenticación:** ASP.NET Core Identity  
-- **Excel:** ClosedXML / EPPlus  
+- **Excel:** ClosedXML
 - **Frontend:** Razor Views, Bootstrap
 
 ---
